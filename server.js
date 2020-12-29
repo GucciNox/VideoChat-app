@@ -5,6 +5,13 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const { v4: uuidv4} = require('uuid');
 app.set('view engine', 'ejs');
+
+
+const ssl = require('./heroku-ssl')
+const port = process.env.PORT
+
+
+
 app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.redirect(`/${uuidv4()}`) 
